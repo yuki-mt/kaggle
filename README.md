@@ -3,12 +3,9 @@
 ```
 $ unzip competitive-data-science-predict-future-sales.zip -d data/01_raw/
 
-$ conda install -c conda-forge -y kedro
-$ kedro install
+$ conda env create -f=conda.yaml
 $ conda activate kaggle
 
-# start jupyter notebook and MLFlow server
+# start jupyter notebook, MLFlow server and kedro-viz
 $ ./setup.sh
 ```
-
-kedro build-reqs
