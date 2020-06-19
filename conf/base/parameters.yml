@@ -1,0 +1,5 @@
+npartitions: 8
+model:
+  name: lgb
+  lgb:
+    random_state: 100

@@ -1,7 +1,18 @@
 .DS_Store
 .ipynb_checkpoints
 mlruns
-.metaflow
-data/*.csv
 
+conf/local/**
+!conf/local/.gitkeep
+conf/**/*credentials*
+data/**
+logs/**
+
+!data/**/
+!logs/**/
 !.gitkeep
+
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/

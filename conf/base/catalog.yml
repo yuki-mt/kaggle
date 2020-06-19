@@ -1,0 +1,67 @@
+sales_df:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/sales_train.csv
+item_df:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/items.csv
+test_df:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/test.csv
+
+grid_merged_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/grid_merged.csv
+train_enc_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/train_enc.csv
+lag_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/lag.csv
+lag_drop_cols:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/lag_drop_cols.pkl
+  backend: pickle
+cols_to_rename:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/cols_to_rename.pkl
+  backend: pickle
+test_lag_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/test_lag.csv
+test_join_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/test_join.csv
+
+x_train:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/x_train.csv
+y_train:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/y_train.csv
+x_val:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/x_val.csv
+y_val:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/y_val.csv
+x_test:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/x_test.csv
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/model.pkl
+  backend: pickle
+
+submission:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/submission.csv
+
+train_score:
+  type: pickle.PickleDataSet
+  filepath: data/08_reporting/train_score.pkl
+  backend: pickle
+val_score:
+  type: pickle.PickleDataSet
+  filepath: data/08_reporting/val_score.pkl
+  backend: pickle

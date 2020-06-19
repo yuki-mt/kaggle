@@ -1,6 +1,5 @@
 import optuna
 import numpy as np
-from metaflow import Run
 from sklearn.metrics import mean_squared_error
 from sklearn.svm import SVR
 from sklearn.pipeline import make_pipeline
@@ -10,24 +9,23 @@ from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
-
-run_id = '1591105226171747'
-run = Run(f'SalesFlow/{run_id}')
-
-def downcast_dtypes(df):
-    float_cols = [c for c in df if df[c].dtype == "float64"]
-    int_cols = [c for c in df if df[c].dtype == "int64"]
-
-    df[float_cols] = df[float_cols].astype(np.float32)
-    df[int_cols] = df[int_cols].astype(np.int32)
-
-    return df
+from kedro.config import ConfigLoader
+from kedro.io import DataCatalog
 
 
-X_train = downcast_dtypes(run.data.X_train)
-y_train = run.data.y_train
-X_val = downcast_dtypes(run.data.X_val)
-y_val = run.data.y_val
+def load_data():
+    global X_train
+    global y_train
+    global X_val
+    global y_val
+    conf_paths = ["conf/base", "conf/local"]
+    conf_loader = ConfigLoader(conf_paths)
+    conf_catalog = conf_loader.get("catalog*", "catalog*/**")
+    catalog = DataCatalog.from_config(conf_catalog)
+    X_train = catalog.load('x_train')
+    y_train = catalog.load('y_train')
+    X_val = catalog.load('x_val')
+    y_val = catalog.load('y_val')
 
 def get_score(model):
     model.fit(X_train, y_train)
