@@ -10,7 +10,7 @@ def start(df: pd.DataFrame) -> pd.DataFrame:
     df['sales_price'] = df['item_cnt_day'] * df['item_price']
     return df
 
-def remove_outliner(df: pd.DataFrame) -> pd.DataFrame:
+def remove_outlier(df: pd.DataFrame) -> pd.DataFrame:
     def remove(df: pd.DataFrame, col: str):
         q = df[col].quantile(0.99)
         return df[df[col] < q]

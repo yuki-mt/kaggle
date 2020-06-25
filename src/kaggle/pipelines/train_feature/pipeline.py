@@ -1,6 +1,6 @@
 from kedro.pipeline import Pipeline
 
-from .nodes import start, remove_outliner, grid, group, \
+from .nodes import start, remove_outlier, grid, group, \
     merge_grouped, merge_category, calc_global_mean, \
     mean_encoding, join_encoding, cols_for_lag, lag, join_lag, \
     remove_cols, split_data
@@ -19,7 +19,7 @@ shift_range = [1, 2, 3, 4, 5, 12]
 def create_pipeline(**kwargs):
     nodes = [
         _node(start, 'sales_df', 'start_df'),
-        _node(remove_outliner, 'start_df', 'preprocessed_df'),
+        _node(remove_outlier, 'start_df', 'preprocessed_df'),
         _node(_partial(grid, grid_cols), 'preprocessed_df', 'grid_df'),
         _node(merge_grouped,
               ['grid_df'] + [f'{g[0]}_cols_and_df' for g in group_cols],
