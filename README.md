@@ -13,4 +13,7 @@ $ kedro run
 
 # start jupyter notebook, MLFlow server and kedro-viz
 $ ./setup.sh
+
+# export env to yaml
+$ conda env export -n kaggle > conda.yaml
 ```

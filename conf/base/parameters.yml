@@ -3,3 +3,5 @@ model:
   name: lgb
   lgb:
     random_state: 100
+  rf:
+    random_state: 100
